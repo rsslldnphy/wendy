@@ -6,13 +6,14 @@ module Wendy
 
   class Wender
 
-    def initialize(initiator, arg)
+    def initialize(initiator, arg, *others)
       @initiator = initiator
       @arg = arg
+      @others = others
     end
 
-    def through(method)
-      Wender.new(initiator, initiator.send(method, arg))
+    def through(method, *others)
+      Wender.new(initiator, initiator.send(method, *([arg] + others)))
     end
 
     def result
