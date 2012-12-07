@@ -33,4 +33,14 @@ Here's an example:
     MathsFunctions.new.two_x_squared(5) # => 100
 
 
+You can also pass extra arguments to methods in the chain, like this:
 
+    def add(x, y)
+      x + y
+    end
+    
+    def wend_with_arg(x)
+      wend(x).through(:square).and(:add, 15).result
+    end
+    
+NB. Methods called in the chain must be defined on the class on which `wend` is called.
